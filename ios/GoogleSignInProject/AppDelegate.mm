@@ -1,6 +1,7 @@
 #import "AppDelegate.h"
 
 #import <React/RCTBundleURLProvider.h>
+#import <GoogleSignIn/GoogleSignIn.h>
 
 @implementation AppDelegate
 
@@ -19,6 +20,9 @@
   return [self bundleURL];
 }
 
+- (BOOL)application:(UIApplication *)application openURL:(nonnull NSURL *)url options:(nonnull NSDictionary<NSString *,id> *)options {
+  return [GIDSignIn.sharedInstance handleURL:url];
+}
 - (NSURL *)bundleURL
 {
 #if DEBUG
